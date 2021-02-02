@@ -104,13 +104,7 @@
                 margin-left: -80px;
                 font-size: 10px;
             }
-            .navi {
-                width: 150px;
-                float:left;
-                margin-top: 4px;
-                margin-left: 10px;
-               background-color: ;
-            }
+           
             li {
                 list-style: none;
                 text-align: center;
@@ -132,11 +126,8 @@
            
             .famous_word {
                 float: left;
+            }
 
-            }
-            .name {
-                
-            }
            .article {
                width: 550px;
                margin: 0 auto;

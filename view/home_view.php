@@ -8,13 +8,17 @@
         <style>
             body {
                 margin: 0px;
-                background-color: white;
+                background-color: #D2B48C;
+            }
+            .header_box {
+                width: 100%;
+            }
                 
             }
             header {
-                width: 960;
                 height: 100px;
                 background-color: #D2B48C;
+                border-bottom: 1px solid white;
             }
             h1 {
                 margin-top: 18px;
@@ -23,6 +27,7 @@
                 margin-left: 10px;
                 padding: 10px;
                 font-family: Meiryo;
+                color: white;
             }
             .logout {
                 float: right;
@@ -34,10 +39,12 @@
                 float: left;
                 margin-top: 56px;
                 margin-left: 30px;
+                color: white;
             }
             .today_word {
                 text-align: center;
-                width: 550px;
+                border: 1px solid white;
+                margin-top: 30px;
                 margin: 0 auto;
                 background-color: #E6FFE9;
             }
@@ -53,20 +60,24 @@
             .past-title {
                 text-align: center;
                 margin-top: 30px;
+                padding-top: 30px;
             }
             p {
                 margin-bottom: 10px;
             }
             .past_words {
-                width: 550px;
-                height: 700px;
                 margin: 0 auto;
                 background-color: #EEEEEE;
-                overflow-y: scroll;
                 margin-top: 10px;
             }
+
+            .list_box {
+                overflow-y: scroll;
+                height: 700px;
+                
+            }
             .list_day {
-                width: 500px;
+                width: 600px;
                 background-color: white;
                 margin: 0 auto;
                 margin-bottom: 10px;
@@ -94,6 +105,7 @@
                 width: 960;
                 height: 100px;
                 background-color: #D2B48C;
+                border-top: 1px solid white;
             }
             .error {
                 font-size: 10px;
@@ -117,11 +129,13 @@
                 margin: 0px;
             }
             .famous_word_box {
-                width: 520px;
-                border: solid 1px;
+                width: 670px;
+                border: solid 1px white;
+                border-radius: 10px 10px;
                 margin: 0 auto;
                 margin-top: 30px;
                 padding: 15px;
+                background-color: white;
             }
            
             .famous_word {
@@ -129,9 +143,33 @@
             }
 
            .article {
-               width: 550px;
+               width: 700px;
                margin: 0 auto;
-               
+               margin-top: 30px;
+           }
+
+           .header-list {
+               display: flex;
+               width: 100%;
+               border-bottom: 1px solid white;
+               border-top: 1px solid white;
+           }
+           .list-index {
+               flex: 1;
+               padding: 20px;
+               text-decoration: none;
+               color: #EEEEEE;
+               text-align: center;
+               border-right: 1px solid #EEEEEE;
+
+           }
+           .status {
+               flex: 1;
+           }
+           .famous_title {
+               text-align: cemter;
+               font-size: 22px;
+               border-bottom: 1px solid;
            }
         </style>
     </head>
@@ -142,9 +180,22 @@
                 <a href="logout.php" class="logout">ログアウト</a>
                 <span class="hello"><?php print 'ようこそ'. $name. 'さん'; ?></span>
             </header>
+            <div class="header-list">
+                <a href="view/howto_view.html" class="list-index">kotonohaの使い方</a>
+                <a href="#" class="list-index">みんなのkotonohaを見にいく</a>
+                <form method="post" class="list-index">
+                    <select name="status" class="status">
+                        <option value="status">公開設定</option>
+                        <option value="1">公開</option>
+                        <option value="2">非公開</option>
+                    </select>  
+                    <input type="submit" name="submit" value="変更">  
+                </form>
+            </div>    
         </div>
         <div class="main"> 
             <div class="famous_word_box">
+                <p class="famous_title">今日の格言</p>
                 <?php foreach($data_word as $value) { ?>
                 <p class="famous_word"><?php print $value['word']; ?></p><br>
                 <p class="name"><?php print $value['who']; ?></p>
@@ -154,7 +205,7 @@
                 <article class="today_word">
                     <h2 class="today_title">言葉を記録</h2>
                     <form method="post" action="./home.php">
-                        <textarea name="words" rows="4" cols="40" placeholder="ここに入力して下さい"></textarea><br>
+                        <textarea name="words" rows="4" cols="60" placeholder="ここに入力して下さい"></textarea><br>
                         <?php if (empty($error) !== TRUE) { ?>
                             <span class="error"><?php foreach($error as $value) { print $value;} ?></span><br>
                         <?php } else { ?>

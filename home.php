@@ -23,6 +23,14 @@ if ($request_method === 'POST') {
     $date = date('Y-m-d');
     $task = get_post_data('task');
     $comment_id = get_post_data('id');
+    $status = get_post_data('status');
+   
+    if ($task === 'status') {
+        if (preg_match('/^[12]$/', $status) === 1) {
+        $sql = "UPDATE user_info_table SET status = '".$status."' WHERE user_id = '".$user_id."'";
+        mysqli_query($link, $sql);
+        }
+    }
    
     if ($task === 'insert') {
         if (empty($words) === TRUE) {
@@ -53,11 +61,14 @@ $sql = "SELECT comment_id, words, created_date FROM index_table  WHERE user_id =
 $data = get_as_array($link, $sql);
 $data = entity_assoc_array($data);
 
+$sql = "SELECT status FROM user_info_table WHERE user_id = '".$user_id."'";
+$data_status = get_as_array($link, $sql);
+$data_status = entity_assoc_array($data_status);
+$status_now = $data_status[0]['status'];
 
 
 $id = mt_rand(1,100);
-       
-    
+
 $sql = "SELECT word, who FROM words_table WHERE id = '".$id."'";
 $data_word = get_as_array($link, $sql);
 $data_word = entity_assoc_array($data_word);

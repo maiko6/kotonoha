@@ -6,7 +6,7 @@
         <title>トップ</title>
         <style>
             body {
-                width: 960px;
+                width: 100%;
                 background-color: #D2B48C;
                 font-family: Meiryo;
             }

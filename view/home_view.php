@@ -8,19 +8,17 @@
         <style>
             body {
                 margin: 0px;
-                background-color: #D2B48C;
             }
             .header_box {
                 width: 100%;
+                background-color: #D2B48C;
             }
                 
             }
             header {
-                height: 100px;
-                background-color: #D2B48C;
-                border-bottom: 1px solid white;
+                height: 200px;
             }
-            h1 {
+            header .title {
                 margin-top: 18px;
                 font-size: 40px;
                 float: left;
@@ -41,12 +39,14 @@
                 margin-left: 30px;
                 color: white;
             }
+            
             .today_word {
                 text-align: center;
                 border: 1px solid white;
+                border-radius: 10px 10px;
                 margin-top: 30px;
                 margin: 0 auto;
-                background-color: #E6FFE9;
+                background-color: #EEEEEE;
             }
             .today_title {
                 margin-top: 30px;
@@ -62,13 +62,13 @@
                 margin-top: 30px;
                 padding-top: 30px;
             }
-            p {
-                margin-bottom: 10px;
-            }
+            
             .past_words {
                 margin: 0 auto;
                 background-color: #EEEEEE;
-                margin-top: 10px;
+                margin-top: 15px;
+                border: 1px solid #EEEEEE;
+                border-radius: 10px 10px;
             }
 
             .list_box {
@@ -135,7 +135,7 @@
                 margin: 0 auto;
                 margin-top: 30px;
                 padding: 15px;
-                background-color: white;
+                background-color: #EEEEEE;
             }
            
             .famous_word {
@@ -145,53 +145,87 @@
            .article {
                width: 700px;
                margin: 0 auto;
-               margin-top: 30px;
+               margin-top: 15px;
            }
 
            .header-list {
                display: flex;
                width: 100%;
-               border-bottom: 1px solid white;
                border-top: 1px solid white;
+               
            }
            .list-index {
                flex: 1;
-               padding: 20px;
-               text-decoration: none;
-               color: #EEEEEE;
+               padding: 5px;
                text-align: center;
-               border-right: 1px solid #EEEEEE;
-
+               margin-bottom: 0px;
+           }
+           .list-index a, .footer-index a{
+               text-decoration: none;
+               color: white;
            }
            .status {
                flex: 1;
+           }
+           .status_now {
+               color: white;
            }
            .famous_title {
                text-align: cemter;
                font-size: 22px;
                border-bottom: 1px solid;
            }
+           .footer-list {
+               display: flex;
+               width: 500px;
+               margin: 0 auto;
+           }
+           .footer-index {
+               flex: 1;
+           }
+               
+           }
+           .footer-index {
+               text-decoration: none;
+               color: white;
+           }
+            .copyright {
+                color: white;
+                 text-align: center;
+            }
         </style>
     </head>
     <body>
         <div class="header_box">
             <header>
-                <h1>kotonoha</h1>
+                <h1 class="title">kotonoha</h1>
                 <a href="logout.php" class="logout">ログアウト</a>
                 <span class="hello"><?php print 'ようこそ'. $name. 'さん'; ?></span>
             </header>
-            <div class="header-list">
-                <a href="view/howto_view.html" class="list-index">kotonohaの使い方</a>
-                <a href="#" class="list-index">みんなのkotonohaを見にいく</a>
-                <form method="post" class="list-index">
-                    <select name="status" class="status">
-                        <option value="status">公開設定</option>
-                        <option value="1">公開</option>
-                        <option value="2">非公開</option>
-                    </select>  
-                    <input type="submit" name="submit" value="変更">  
-                </form>
-            </div>    
+            <ul class="header-list">
+                <li class="list-index">
+                    <a href="view/howto_view.html">kotonohaの使い方</a>
+                </li>
+                <li class="list-index">     
+                    <a href="#">みんなのkotonohaを見にいく</a>
+                </li>   
+                <li class="list-index"> 
+                    <form method="post" action="./home.php">
+                        <select name="status" class="status">
+                            <option value="status">公開設定</option>
+                            <option value="1">公開</option>
+                            <option value="2">非公開</option>
+                        </select>  
+                        <input type="submit" name="submit" value="変更">
+                        <input type="hidden" name="task" value="status"> 
+                        <?php if ($status_now === '1') { ?>
+                            <span class="status_now">公開ユーザーです</span>
+                        <?php } else { ?>
+                            <span class="status_now">非公開ユーザーです</span>
+                        <?php } ?> 
+                    </form>    
+                </li>
+            </ul>                    
         </div>
         <div class="main"> 
             <div class="famous_word_box">
@@ -236,6 +270,15 @@
             </div>
         </div>    
         <footer class="footer-box">
+            <ul class="footer-list">
+                <li class="footer-index">
+                    <a href="view/howto_view.html">how to use</a>
+                </li> 
+                <li class="footer-index">
+                    <a href="#">みんなのkotonoha</a>
+                </li>
+            </ul>      
+            <p class="copyright">&copy; maiko2021</p>     
             
         </footer>
        

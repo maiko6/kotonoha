@@ -14,6 +14,7 @@ if ($request_method === 'POST') {
     $name = get_post_data('name');
     $password = get_post_data('password');
     $date = date("Y-m-d H:i:s");
+    
 
     session_start();
     setcookie('user_name', $name, time() + 60 * 60 * 24 * 365);
@@ -37,7 +38,7 @@ if ($request_method === 'POST') {
     }
 
     if (count($error_name) === 0 && count($error_passwd) === 0) {
-        $sql = "INSERT INTO user_info_table(user_name, password, created_date) VALUES('".$name."', '".$password."', '".$date."')";
+        $sql = "INSERT INTO user_info_table(user_name, password, created_date, status) VALUES('".$name."', '".$password."', '".$date."', 2)";
         if (mysqli_query($link, $sql) === TRUE) {
             $msg = '↓↓登録が完了しました！ログインして下さい';
     } else {

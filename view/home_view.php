@@ -11,31 +11,32 @@
             }
             .header_box {
                 width: 100%;
+                min-width: 900px;
                 background-color: #D2B48C;
+                height: 150px;
+
             }
-                
-            }
-            header {
-                height: 200px;
-            }
-            header .title {
-                margin-top: 18px;
-                font-size: 40px;
+            
+            .title {
+                margin-top: 20px;
+                font-size: 32px;
                 float: left;
                 margin-left: 10px;
                 padding: 10px;
                 font-family: Meiryo;
                 color: white;
+                margin-bottom: 5px;
             }
             .logout {
                 float: right;
-                margin-right: 30px;
-                margin-top: 56px;
+                margin-right: 10px;
+                margin-top: 50px;
                 text-decoration: none;
+                color: white;
             }
             .hello {
                 float: left;
-                margin-top: 56px;
+                margin-top: 50px;
                 margin-left: 30px;
                 color: white;
             }
@@ -102,7 +103,6 @@
                 font-size: 10px;
             }
             .footer-box {
-                width: 960;
                 height: 100px;
                 background-color: #D2B48C;
                 border-top: 1px solid white;
@@ -160,15 +160,22 @@
                text-align: center;
                margin-bottom: 0px;
            }
-           .list-index a, .footer-index a{
+           .list-index a, .footer-index a {
+               display: block;
                text-decoration: none;
                color: white;
+               border-right: 1px solid white;
+           }
+          
+           .footer-index:last-child a{
+               border-right: none;
            }
            .status {
                flex: 1;
            }
            .status_now {
                color: white;
+               font-size: 12px;
            }
            .famous_title {
                text-align: cemter;
@@ -192,6 +199,7 @@
             .copyright {
                 color: white;
                  text-align: center;
+                 margin-top: 0px;
             }
         </style>
     </head>
@@ -207,8 +215,11 @@
                     <a href="view/howto_view.html">kotonohaの使い方</a>
                 </li>
                 <li class="list-index">     
-                    <a href="#">みんなのkotonohaを見にいく</a>
-                </li>   
+                    <a href="./public.php">みんなのkotonohaへ</a>
+                </li> 
+                <li class="list-index">
+                    <a href="./favorite.php">☆お気に入り</a>
+                </li>      
                 <li class="list-index"> 
                     <form method="post" action="./home.php">
                         <select name="status" class="status">
@@ -219,9 +230,9 @@
                         <input type="submit" name="submit" value="変更">
                         <input type="hidden" name="task" value="status"> 
                         <?php if ($status_now === '1') { ?>
-                            <span class="status_now">公開ユーザーです</span>
+                            <span class="status_now">公開ユーザー</span>
                         <?php } else { ?>
-                            <span class="status_now">非公開ユーザーです</span>
+                            <span class="status_now">非公開ユーザー</span>
                         <?php } ?> 
                     </form>    
                 </li>
@@ -275,8 +286,10 @@
                     <a href="view/howto_view.html">how to use</a>
                 </li> 
                 <li class="footer-index">
-                    <a href="#">みんなのkotonoha</a>
+                    <a href="public.php">みんなのkotonoha</a>
                 </li>
+                <li class="footer-index">
+                    <a href="./favorite.php">お気に入り</a>
             </ul>      
             <p class="copyright">&copy; maiko2021</p>     
             

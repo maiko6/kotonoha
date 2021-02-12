@@ -13,6 +13,7 @@ if (isset($_COOKIE['name']) === TRUE) {
     $name = $_COOKIE['name'];
 } else {
     header('Location:./top.php');
+    exit;
 }
 $msg = [];
 $error = [];
@@ -49,9 +50,9 @@ if ($request_method === 'POST') {
     if ($task === 'delete') {
         $sql = "DELETE FROM index_table WHERE comment_id = '".$comment_id."'";
         if (mysqli_query($link, $sql) !== FALSE) {
-            $meg[] = '削除しました';
+            $msg[] = '削除しました';
         } else {
-            $meg[] = '削除に失敗しました';
+            $msg[] = '削除に失敗しました';
         }
     }
 

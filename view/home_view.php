@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta content="大切な言葉は書き留めよう。" name="description">
-        
         <title>ホーム</title>
         <style>
             body {
@@ -201,9 +200,15 @@
                  text-align: center;
                  margin-top: 0px;
             }
+            .msg2 {
+                text-align: center;
+            }
         </style>
     </head>
     <body>
+    <script type="text/javascript"src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="../kotonoha/view/hover.js"></script>
+    <script type="text/javascript"></script>
         <div class="header_box">
             <header>
                 <h1 class="title">kotonoha</h1>
@@ -263,7 +268,7 @@
                 </article>
                 <article class="past_words">
                     <h2 class="past-title"><?php print $name. 'の記録'; ?></h2>
-                    <p><?php if (empty($data) === TRUE) { print 'まだ記録がありません'; } ?></p>
+                    <p class="msg2"><?php if (empty($data) === TRUE) { print 'まだ記録がありません'; } ?></p>
                     <div class="list_box">
                         <?php foreach($data as $value) { ?>
                         <div class="list_day">

@@ -134,6 +134,9 @@ h1 {
 }
 </style>
 <body>
+    <script type="text/javascript"src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="../kotonoha/view/hover.js"></script>
+    <script type="text/javascript"></script>
 <div class="header_box">
     <header>
        <h1>

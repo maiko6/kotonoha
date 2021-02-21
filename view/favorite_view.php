@@ -52,8 +52,11 @@
             background-color: white;
             margin: 0 auto;
             margin-bottom: 5px;
+            
+        }
+        .word-house {
             overflow-y: scroll;
-           
+            height: 900px;
         }
         .title {
             text-align: center;
@@ -107,10 +110,16 @@
                  text-align: center;
                  margin-top: 5px;
             }
+        .msg {
+            text-align: center;
+        }    
     </style>
 
 </head>
 <body>
+    <script type="text/javascript"src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="../kotonoha/view/hover.js"></script>
+    <script type="text/javascript"></script>
     <div class="header-box">
         <header>
             <h1>
@@ -132,16 +141,21 @@
     </div>
     <article class="main">
         <h2 class="title">お気に入り</h2>
+        <div class="word-house">
+            <p class="msg">
+                <?php if (empty($data) === TRUE) { print 'まだお気に入りは登録されていません'; } ?>
+            </p>        
     <?php foreach($data as $value) { ?>
-        <div class="word-box">
-            <form method="post" action="favorite.php" onsubmit="delete()">
-                <input type="submit" value="削除"  class="delete" onclick="return confirm('本当に削除しますか？')"> 
-                <input type="hidden" name="comment_id" value="<?php print $value['comment_id']; ?>">
-            </form>  
-            <span class="date"><?php print $value['created_date']; ?></span>
-            <p class="word"><?php print $value['words']; ?></p>
-        </div>
-    <?php } ?>    
+            <div class="word-box">
+                <form method="post" action="favorite.php" onsubmit="delete()">
+                    <input type="submit" value="削除"  class="delete" onclick="return confirm('本当に削除しますか？')"> 
+                    <input type="hidden" name="comment_id" value="<?php print $value['comment_id']; ?>">
+                </form>  
+                <span class="date"><?php print $value['created_date']; ?></span>
+                <p class="word"><?php print $value['words']; ?></p>
+            </div>
+    <?php } ?> 
+        </div>   
          
     </article>
     <div class="footer-box">
